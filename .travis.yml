@@ -3,10 +3,19 @@ language: android
 android:
   components:
     - build-tools-24.0.3
-    - android-22
+    - android-22 android-23
 
 script:
 - echo "Travis branch is $TRAVIS_BRANCH"
+- gradle clean app:assembleDebug
+- gradle conversationSDK:mockableAndroidJar
+#- gradle :conversationSDK:prepareDebugUnitTestDependencies
+#- gradle :conversationSDK:compileDebugUnitTestSources
+
+# after_script:
+# after_success:
+#   - ./gradlew jacocoFullReport
+
 branches:
   only:
     - beta-0.0.1
@@ -16,4 +25,4 @@ jdk:
 notifications:
   email:
     - emma.tresanszki@nexmo.com
-   # - oss@nexmo.com
+    #- oss@nexmo.com

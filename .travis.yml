@@ -1,10 +1,19 @@
 language: android
+
 android:
   components:
     - build-tools-24.0.3
     - android-22
 
-   script:
-    - echo "Travis branch is $TRAVIS_BRANCH"
-    - echo "Travis branch is in pull request $TRAVIS_PULL+REQUEST"
-    - mvn clean install -P 'conversation'
+script:
+- echo "Travis branch is $TRAVIS_BRANCH"
+branches:
+  only:
+    - beta-0.0.1
+jdk:
+  - oraclejdk7
+
+notifications:
+  email:
+    - emma.tresanszki@nexmo.com
+   # - oss@nexmo.com

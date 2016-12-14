@@ -7,10 +7,11 @@ android:
 
 script:
 - echo "Travis branch is $TRAVIS_BRANCH"
-- gradle clean app:assembleDebug
+- gradle app:assembleDebug
 - gradle conversationSDK:mockableAndroidJar
 #- gradle :conversationSDK:prepareDebugUnitTestDependencies
 #- gradle :conversationSDK:compileDebugUnitTestSources
+# -./gradlew test
 
 # after_script:
 # after_success:
